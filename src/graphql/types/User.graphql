@@ -1,0 +1,64 @@
+type Member {
+      _id:String!
+      date:Datetime!
+      month:Int!
+      username:String!
+      address:String!
+      phonNumber:String!
+}
+
+type Data {
+    _id:String!
+    memberId:Member!
+    date:String!
+    month:String!
+    total_p:Int!
+    design:String!
+    color:String!
+    return_p:Int!
+    price:Int!
+
+}
+
+type Query {
+    getMember: [Member!]!
+    getMemberData(at: String): Member!
+    getAllData: [Data!]
+    getData (at: String!): Data!
+    getListedData (m_Id: String!) : [Data!]!
+
+}
+
+
+type Mutation {
+    createMember(input: CreateMemberInput): Member!
+    createDataField(input: createDataField):outputDataField!
+    
+}
+
+type outputDataField {
+       _id:String!
+       date:String!
+       month:Int!
+       memberId:String!
+       total_p:Int!
+       design:String!
+       return_p:Int!
+       price:Int!
+       color:String!
+}
+
+input CreateMemberInput {
+     username:String!
+     address:String!
+     phonNumber:String!
+}
+
+input createDataField {
+       memberId:String!
+       total_p:Int!
+       design:String!
+       return_p:Int!
+       price:Int!
+       color:String!
+}
